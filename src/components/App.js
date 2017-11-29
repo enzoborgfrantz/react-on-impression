@@ -2,9 +2,11 @@ import styled from 'styled-components';
 import React from 'react';
 import PropTypes from 'prop-types';
 import helloWorld from 'modules/hello.module';
+import TrackImpression from './TrackImpression';
 
 const Wrapper = styled.div`
   padding: 5px;
+  height: 500px;
   background: linear-gradient(
     45deg,
     #f09433 0%,
@@ -41,5 +43,13 @@ App.propTypes = {
 
 export default function() {
   const result = helloWorld();
-  return <App text={result} />;
+  return (
+    <div>
+      <App text={result} />
+      <App text={result} />
+      <TrackImpression onImpression={() => console.log('im visible')}>
+        <App text={result} />
+      </TrackImpression>
+    </div>
+  );
 }

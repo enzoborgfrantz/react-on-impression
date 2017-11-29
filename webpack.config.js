@@ -11,8 +11,8 @@ const ModuleConcatenationPlugin = webpack.optimize.ModuleConcatenationPlugin;
 
 const baseConfig = {
   entry: {
-    polyfills: './src/polyfills.js',
-    index: './src/index.js',
+    // polyfills: './src/polyfills.js',
+    index: './src/components/TrackImpression.js',
   },
   output: {
     path: path.resolve('dist'),
@@ -42,6 +42,9 @@ const baseConfig = {
       excludeChunks: ['polyfills'],
     }),
   ],
+  externals: {
+    react: 'React',
+  },
 };
 
 const devConfig = {
@@ -51,7 +54,7 @@ const devConfig = {
     contentBase: path.resolve('dist'),
     hot: true,
     compress: true,
-    port: 9000,
+    port: 9099,
     inline: false,
     noInfo: true,
     open: true,
